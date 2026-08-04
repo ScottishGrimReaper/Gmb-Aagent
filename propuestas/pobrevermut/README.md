@@ -20,6 +20,16 @@ traccionar el ecommerce.
 
 Hubo una versión previa de 11 slides (commit `494232c`), descartada por larga.
 
+## Diseño
+
+Fondo tinta (`0F0E0D`) en todo el deck, con el slide del honorario invertido a
+naranja completo. Acento naranja aperitivo (`EF5B25`), texto hueso (`F2EEE9`).
+Tipografía sans en todo: Arial para titulares y numerales, Calibri para texto
+corrido. El motivo gráfico es el círculo naranja de la portada.
+
+Reemplaza el diseño anterior en burdeos y dorado con tipografía serif, que leía
+demasiado formal para la marca.
+
 ## Regenerar el deck
 
 ```bash

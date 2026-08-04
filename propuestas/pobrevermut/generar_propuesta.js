@@ -1,6 +1,6 @@
 /**
  * PobreVermut — Propuesta de campañas 2026
- * Versión corta: 5 slides, una idea por slide.
+ * 5 slides. Diseño: fondo tinta, acento naranja aperitivo, tipografía sans.
  *
  * Uso: node generar_propuesta.js [ruta_salida.pptx]
  */
@@ -8,179 +8,149 @@
 const pptxgen = require("pptxgenjs");
 
 // ---------------------------------------------------------------- paleta
-const INK = "2B1B14";
-const WINE_DARK = "4A1220";
-const WINE = "8C2F39";
-const GOLD = "C8963E";
-const CREAM = "F6F1EA";
-const WHITE = "FFFFFF";
-const MUTED = "7D6A5E";
-const SOFT = "C4AEA1"; // secundario sobre oscuro
+const INK = "0F0E0D"; // fondo dominante
+const ORANGE = "EF5B25"; // acento — naranja aperitivo
+const BONE = "F2EEE9"; // texto sobre tinta
+const GREY = "8A807A"; // texto secundario sobre tinta
+const DEEP = "140C07"; // texto sobre naranja
 
-const SERIF = "Cambria";
-const SANS = "Calibri";
+const DISPLAY = "Arial"; // titulares y numerales
+const TEXT = "Calibri"; // texto corrido
 
 const W = 13.333;
-const M = 0.9; // margen lateral
+const M = 0.9;
 const CW = W - M * 2;
 
 const pres = new pptxgen();
 pres.layout = "LAYOUT_WIDE";
-pres.author = "Nicolas - Sherpas Studio";
-pres.company = "Sherpas Studio";
+pres.author = "Nicolas";
 pres.title = "PobreVermut - Propuesta de campanas 2026";
 
 // ---------------------------------------------------------------- helpers
 
-function head(slide, kicker, title, sub) {
-  slide.addText(kicker.toUpperCase(), {
+/** Encabezado: índice + kicker naranja, y titular grande. */
+function head(slide, index, kicker, title, sub, onOrange) {
+  const accent = onOrange ? DEEP : ORANGE;
+  const main = onOrange ? DEEP : BONE;
+  const soft = onOrange ? DEEP : GREY;
+
+  slide.addText(`${index}  —  ${kicker.toUpperCase()}`, {
     x: M,
-    y: 0.72,
+    y: 0.82,
     w: CW,
     h: 0.3,
-    fontFace: SANS,
+    fontFace: DISPLAY,
     fontSize: 11,
     bold: true,
-    color: GOLD,
+    color: accent,
     charSpacing: 2.5,
     margin: 0,
   });
   slide.addText(title, {
     x: M,
-    y: 1.08,
+    y: 1.24,
     w: CW,
-    h: 0.72,
-    fontFace: SERIF,
-    fontSize: 40,
+    h: 0.8,
+    fontFace: DISPLAY,
+    fontSize: 38,
     bold: true,
-    color: INK,
+    color: main,
     margin: 0,
   });
   if (sub) {
     slide.addText(sub, {
       x: M,
-      y: 1.86,
+      y: 2.08,
       w: CW,
       h: 0.36,
-      fontFace: SANS,
+      fontFace: TEXT,
       fontSize: 15,
-      color: MUTED,
+      color: soft,
       margin: 0,
     });
   }
 }
 
-/** Círculo dorado — el único motivo gráfico del deck. */
-function dot(slide, x, y, d, label, opts = {}) {
+/** Punto sólido. */
+function dot(slide, x, y, d, color) {
   slide.addShape(pres.ShapeType.ellipse, {
     x,
     y,
     w: d,
     h: d,
-    fill: { color: opts.fill || GOLD },
+    fill: { color: color || ORANGE },
   });
-  if (label) {
-    slide.addText(label, {
-      x,
-      y,
-      w: d,
-      h: d,
-      align: "center",
-      valign: "middle",
-      fontFace: SERIF,
-      fontSize: opts.fontSize || 20,
-      bold: true,
-      color: opts.color || WINE_DARK,
-      margin: 0,
-    });
-  }
 }
 
 // ================================================================ 1 · PORTADA
 {
   const s = pres.addSlide();
-  s.background = { color: WINE_DARK };
+  s.background = { color: INK };
 
-  s.addShape(pres.ShapeType.ellipse, {
-    x: 9.6,
-    y: 2.3,
-    w: 2.7,
-    h: 2.7,
-    fill: { color: WINE_DARK },
-    line: { color: GOLD, width: 1.25 },
-  });
-  s.addText("PV", {
-    x: 9.6,
-    y: 2.3,
-    w: 2.7,
-    h: 2.7,
-    align: "center",
-    valign: "middle",
-    fontFace: SERIF,
-    fontSize: 56,
-    bold: true,
-    color: GOLD,
-    margin: 0,
-  });
-
-  s.addText("PROPUESTA  ·  AGOSTO 2026", {
-    x: M,
-    y: 0.85,
-    w: 7.5,
-    h: 0.3,
-    fontFace: SANS,
-    fontSize: 11,
-    bold: true,
-    color: GOLD,
-    charSpacing: 2.5,
-    margin: 0,
-  });
+  // el motivo: la rodaja de naranja
+  dot(s, 9.85, 2.72, 2.6);
 
   s.addText("POBREVERMUT", {
     x: M,
-    y: 2.5,
-    w: 8.2,
-    h: 0.42,
-    fontFace: SANS,
-    fontSize: 16,
+    y: 0.95,
+    w: 7.0,
+    h: 0.34,
+    fontFace: DISPLAY,
+    fontSize: 12,
     bold: true,
-    color: CREAM,
-    charSpacing: 5,
+    color: ORANGE,
+    charSpacing: 6,
     margin: 0,
   });
 
-  s.addText("Campañas para\nvender online", {
-    x: M,
-    y: 2.95,
-    w: 8.2,
-    h: 1.75,
-    fontFace: SERIF,
-    fontSize: 50,
-    bold: true,
-    color: WHITE,
-    lineSpacingMultiple: 1.0,
-    margin: 0,
-  });
+  s.addText(
+    [
+      { text: "Campañas para", options: { color: BONE, breakLine: true } },
+      { text: "vender online", options: { color: ORANGE } },
+    ],
+    {
+      x: M,
+      y: 3.0,
+      w: 8.6,
+      h: 2.1,
+      fontFace: DISPLAY,
+      fontSize: 54,
+      bold: true,
+      lineSpacingMultiple: 1.02,
+      margin: 0,
+    }
+  );
 
   s.addText("Ya hay marca, comunidad y ecommerce. Ahora, a vender.", {
     x: M,
-    y: 4.85,
-    w: 8.2,
+    y: 5.28,
+    w: 8.6,
     h: 0.4,
-    fontFace: SANS,
-    fontSize: 16,
-    color: SOFT,
+    fontFace: TEXT,
+    fontSize: 17,
+    color: GREY,
     margin: 0,
   });
 
-  s.addText("Nicolás  ·  Sherpas Studio  ·  nicolas@sherpasstudio.cl", {
+  s.addText("Propuesta  ·  Agosto 2026", {
     x: M,
-    y: 6.35,
-    w: 8.5,
-    h: 0.32,
-    fontFace: SANS,
+    y: 6.28,
+    w: 6.0,
+    h: 0.3,
+    fontFace: TEXT,
     fontSize: 13,
-    color: SOFT,
+    color: GREY,
+    margin: 0,
+  });
+  s.addText("Nicolás  ·  nicolas@sherpasstudio.cl", {
+    x: M,
+    y: 6.6,
+    w: 6.0,
+    h: 0.3,
+    fontFace: TEXT,
+    fontSize: 13,
+    bold: true,
+    color: BONE,
     margin: 0,
   });
 }
@@ -188,8 +158,8 @@ function dot(slide, x, y, d, label, opts = {}) {
 // ================================================================ 2 · EL PLAN
 {
   const s = pres.addSlide();
-  s.background = { color: WHITE };
-  head(s, "El plan", "Tres fases, un objetivo", "Cada fase construye lo que la siguiente necesita.");
+  s.background = { color: INK };
+  head(s, "01", "El plan", "Tres fases, un objetivo", "Cada fase construye lo que la siguiente necesita.");
 
   const fases = [
     {
@@ -216,40 +186,51 @@ function dot(slide, x, y, d, label, opts = {}) {
   const gap = (CW - cw * 3) / 2;
   fases.forEach((f, i) => {
     const x = M + i * (cw + gap);
-    dot(s, x, 2.75, 0.78, f.n, { fontSize: 26 });
+    s.addText(f.n, {
+      x,
+      y: 2.85,
+      w: cw,
+      h: 1.15,
+      fontFace: DISPLAY,
+      fontSize: 72,
+      bold: true,
+      color: ORANGE,
+      valign: "top",
+      margin: 0,
+    });
     s.addText(f.meta, {
       x,
-      y: 3.8,
+      y: 4.12,
       w: cw,
       h: 0.28,
-      fontFace: SANS,
-      fontSize: 11,
+      fontFace: DISPLAY,
+      fontSize: 10.5,
       bold: true,
-      color: WINE,
+      color: GREY,
       charSpacing: 1.5,
       margin: 0,
     });
     s.addText(f.t, {
       x,
-      y: 4.12,
+      y: 4.46,
       w: cw,
-      h: 1.1,
-      fontFace: SERIF,
-      fontSize: 26,
+      h: 1.15,
+      fontFace: DISPLAY,
+      fontSize: 25,
       bold: true,
-      color: INK,
-      lineSpacingMultiple: 1.0,
+      color: BONE,
+      lineSpacingMultiple: 1.05,
       valign: "top",
       margin: 0,
     });
     s.addText(f.d, {
       x,
-      y: 5.3,
+      y: 5.72,
       w: cw,
-      h: 0.7,
-      fontFace: SANS,
+      h: 0.85,
+      fontFace: TEXT,
       fontSize: 14,
-      color: MUTED,
+      color: GREY,
       lineSpacingMultiple: 1.15,
       valign: "top",
       margin: 0,
@@ -260,8 +241,8 @@ function dot(slide, x, y, d, label, opts = {}) {
 // ================================================================ 3 · QUÉ HAGO
 {
   const s = pres.addSlide();
-  s.background = { color: WHITE };
-  head(s, "Mi trabajo", "Qué hago cada mes");
+  s.background = { color: INK };
+  head(s, "02", "Mi trabajo", "Qué hago cada mes");
 
   const tareas = [
     "El plan de medios del mes",
@@ -272,48 +253,59 @@ function dot(slide, x, y, d, label, opts = {}) {
   ];
 
   tareas.forEach((t, i) => {
-    const y = 2.55 + i * 0.78;
-    dot(s, M, y + 0.06, 0.42, String(i + 1), { fontSize: 15 });
-    s.addText(t, {
-      x: M + 0.78,
+    const y = 2.75 + i * 0.76;
+    s.addText(String(i + 1).padStart(2, "0"), {
+      x: M,
       y,
-      w: 6.4,
-      h: 0.54,
-      fontFace: SANS,
+      w: 0.62,
+      h: 0.52,
+      fontFace: DISPLAY,
+      fontSize: 14,
+      bold: true,
+      color: ORANGE,
+      valign: "middle",
+      margin: 0,
+    });
+    s.addText(t, {
+      x: M + 0.7,
+      y,
+      w: 6.3,
+      h: 0.52,
+      fontFace: TEXT,
       fontSize: 18,
-      color: INK,
+      color: BONE,
       valign: "middle",
       margin: 0,
     });
   });
 
-  // lo que queda fuera, a la derecha
-  const nx = 8.15;
+  // lo que queda fuera
+  const nx = 8.3;
   const nw = W - nx - M;
   s.addText("NO INCLUYE", {
     x: nx,
-    y: 2.58,
+    y: 2.78,
     w: nw,
     h: 0.3,
-    fontFace: SANS,
-    fontSize: 11,
+    fontFace: DISPLAY,
+    fontSize: 10.5,
     bold: true,
-    color: WINE,
-    charSpacing: 2,
+    color: ORANGE,
+    charSpacing: 2.5,
     margin: 0,
   });
   ["Producción de creativos", "Community management", "La inversión en pauta"].forEach(
     (t, i) => {
-      const y = 3.15 + i * 0.62;
-      dot(s, nx, y + 0.17, 0.16, null, { fill: "D8CCC3" });
+      const y = 3.35 + i * 0.62;
+      dot(s, nx, y + 0.19, 0.14, GREY);
       s.addText(t, {
-        x: nx + 0.42,
+        x: nx + 0.4,
         y,
-        w: nw - 0.42,
+        w: nw - 0.4,
         h: 0.5,
-        fontFace: SANS,
+        fontFace: TEXT,
         fontSize: 16,
-        color: MUTED,
+        color: GREY,
         valign: "middle",
         margin: 0,
       });
@@ -321,43 +313,43 @@ function dot(slide, x, y, d, label, opts = {}) {
   );
 }
 
-// ================================================================ 4 · CUÁNTO
+// ================================================================ 4 · HONORARIO
 {
   const s = pres.addSlide();
-  s.background = { color: WINE_DARK };
+  s.background = { color: ORANGE };
 
-  s.addText("HONORARIO", {
+  s.addText("03  —  HONORARIO", {
     x: M,
-    y: 0.72,
+    y: 0.82,
     w: CW,
     h: 0.3,
-    fontFace: SANS,
+    fontFace: DISPLAY,
     fontSize: 11,
     bold: true,
-    color: GOLD,
+    color: DEEP,
     charSpacing: 2.5,
     margin: 0,
   });
 
   s.addText("$350.000", {
     x: M,
-    y: 1.5,
-    w: 6.2,
-    h: 1.5,
-    fontFace: SERIF,
-    fontSize: 76,
+    y: 1.8,
+    w: 6.4,
+    h: 1.55,
+    fontFace: DISPLAY,
+    fontSize: 78,
     bold: true,
-    color: WHITE,
+    color: DEEP,
     margin: 0,
   });
   s.addText("líquidos al mes", {
     x: M,
-    y: 3.02,
-    w: 6.2,
+    y: 3.38,
+    w: 6.4,
     h: 0.42,
-    fontFace: SANS,
-    fontSize: 19,
-    color: SOFT,
+    fontFace: TEXT,
+    fontSize: 20,
+    color: DEEP,
     margin: 0,
   });
 
@@ -367,17 +359,17 @@ function dot(slide, x, y, d, label, opts = {}) {
     ["Lo que recibo", "$350.000"],
   ];
   filas.forEach(([l, v], i) => {
-    const y = 4.05 + i * 0.5;
+    const y = 4.45 + i * 0.52;
     const last = i === filas.length - 1;
     s.addText(l, {
       x: M,
       y,
       w: 3.4,
       h: 0.42,
-      fontFace: SANS,
+      fontFace: TEXT,
       fontSize: 14,
       bold: last,
-      color: last ? CREAM : SOFT,
+      color: DEEP,
       valign: "middle",
       margin: 0,
     });
@@ -387,28 +379,27 @@ function dot(slide, x, y, d, label, opts = {}) {
       w: 2.2,
       h: 0.42,
       align: "right",
-      fontFace: SANS,
+      fontFace: TEXT,
       fontSize: 14,
       bold: last,
-      color: last ? GOLD : SOFT,
+      color: DEEP,
       valign: "middle",
       margin: 0,
     });
   });
   s.addText("Boleta de honorarios. La retención la declara PobreVermut.", {
     x: M,
-    y: 5.66,
-    w: 6.2,
+    y: 6.12,
+    w: 6.4,
     h: 0.34,
-    fontFace: SANS,
-    fontSize: 12,
+    fontFace: TEXT,
+    fontSize: 12.5,
     italic: true,
-    color: "9C8377",
+    color: DEEP,
     margin: 0,
   });
 
-  // dos notas a la derecha
-  const nx = 7.55;
+  const nx = 7.75;
   const nw = W - nx - M;
   const notas = [
     [
@@ -421,39 +412,40 @@ function dot(slide, x, y, d, label, opts = {}) {
     ],
   ];
   notas.forEach(([t, d], i) => {
-    const y = 1.75 + i * 2.15;
+    const y = 1.95 + i * 2.6;
     s.addText(t, {
       x: nx,
       y,
       w: nw,
       h: 0.3,
-      fontFace: SANS,
-      fontSize: 11,
+      fontFace: DISPLAY,
+      fontSize: 10.5,
       bold: true,
-      color: GOLD,
-      charSpacing: 1.5,
+      color: DEEP,
+      charSpacing: 2,
       margin: 0,
     });
     s.addText(d, {
       x: nx,
-      y: y + 0.42,
+      y: y + 0.44,
       w: nw,
-      h: 1.4,
-      fontFace: SERIF,
-      fontSize: 20,
-      color: WHITE,
-      lineSpacingMultiple: 1.15,
+      h: 1.5,
+      fontFace: DISPLAY,
+      fontSize: 19,
+      bold: true,
+      color: DEEP,
+      lineSpacingMultiple: 1.18,
       valign: "top",
       margin: 0,
     });
   });
 }
 
-// ================================================================ 5 · ARRANCAMOS
+// ================================================================ 5 · PARA PARTIR
 {
   const s = pres.addSlide();
-  s.background = { color: WHITE };
-  head(s, "Para partir", "Qué necesito");
+  s.background = { color: INK };
+  head(s, "04", "Para partir", "Qué necesito");
 
   const reqs = [
     "Accesos a Meta, Instagram y Facebook",
@@ -464,65 +456,56 @@ function dot(slide, x, y, d, label, opts = {}) {
   ];
 
   reqs.forEach((t, i) => {
-    const y = 2.6 + i * 0.72;
-    dot(s, M, y + 0.16, 0.2);
+    const y = 2.75 + i * 0.76;
+    dot(s, M, y + 0.19, 0.16);
     s.addText(t, {
-      x: M + 0.55,
+      x: M + 0.48,
       y,
-      w: 6.1,
+      w: 6.5,
       h: 0.52,
-      fontFace: SANS,
+      fontFace: TEXT,
       fontSize: 17,
-      color: INK,
+      color: BONE,
       valign: "middle",
       margin: 0,
     });
   });
 
-  // bloque de cierre
-  const bx = 7.85;
-  const bw = W - bx - M;
-  s.addShape(pres.ShapeType.roundRect, {
-    x: bx,
-    y: 2.5,
-    w: bw,
-    h: 3.5,
-    rectRadius: 0.08,
-    fill: { color: WINE_DARK },
-  });
-  s.addText("Campañas activas en dos semanas.", {
-    x: bx + 0.5,
-    y: 2.95,
-    w: bw - 1.0,
-    h: 1.5,
-    fontFace: SERIF,
-    fontSize: 28,
+  const nx = 8.3;
+  const nw = W - nx - M;
+  s.addText("Campañas activas\nen dos semanas.", {
+    x: nx,
+    y: 2.7,
+    w: nw,
+    h: 1.7,
+    fontFace: DISPLAY,
+    fontSize: 30,
     bold: true,
-    color: WHITE,
-    lineSpacingMultiple: 1.1,
+    color: ORANGE,
+    lineSpacingMultiple: 1.08,
     valign: "top",
     margin: 0,
   });
-  s.addText("Nicolás  ·  Sherpas Studio", {
-    x: bx + 0.5,
-    y: 4.85,
-    w: bw - 1.0,
-    h: 0.32,
-    fontFace: SANS,
-    fontSize: 14,
+  s.addText("Nicolás", {
+    x: nx,
+    y: 4.55,
+    w: nw,
+    h: 0.34,
+    fontFace: DISPLAY,
+    fontSize: 15,
     bold: true,
-    color: GOLD,
+    color: BONE,
     margin: 0,
   });
   s.addText("nicolas@sherpasstudio.cl\n+56 9 3125 6539", {
-    x: bx + 0.5,
-    y: 5.18,
-    w: bw - 1.0,
-    h: 0.62,
-    fontFace: SANS,
-    fontSize: 13,
-    color: SOFT,
-    lineSpacingMultiple: 1.2,
+    x: nx,
+    y: 4.92,
+    w: nw,
+    h: 0.68,
+    fontFace: TEXT,
+    fontSize: 14,
+    color: GREY,
+    lineSpacingMultiple: 1.25,
     margin: 0,
   });
 }
