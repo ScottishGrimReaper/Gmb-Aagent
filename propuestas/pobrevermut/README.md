@@ -7,8 +7,18 @@ traccionar el ecommerce.
 
 | Archivo | Qué es |
 |---|---|
-| `PobreVermut - Propuesta Campanas 2026.pptx` | El entregable. 11 slides, editable. |
+| `PobreVermut - Propuesta Campanas 2026.pptx` | El entregable. 5 slides, editable. |
 | `generar_propuesta.js` | Script que genera el `.pptx`. Editar acá y regenerar. |
+
+## Los 5 slides
+
+1. Portada
+2. El plan — las tres fases
+3. Qué hago cada mes — y qué no incluye
+4. Honorario — $350.000 líquidos, pauta aparte, revisión al mes 3
+5. Qué necesito para partir — y contacto
+
+Hubo una versión previa de 11 slides (commit `494232c`), descartada por larga.
 
 ## Regenerar el deck
 
