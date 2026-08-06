@@ -22,7 +22,6 @@ const DISPLAY = "Arial"; // titulares — caja alta, pesados
 const MONO = "Courier New"; // etiquetas y texto — caja alta, espaciada
 
 const ART = path.join(__dirname, "marca");
-const VASO = path.join(ART, "vaso-magenta.png");
 const TAGLINE = path.join(ART, "tagline-blanco.png");
 
 const W = 13.333;
@@ -93,8 +92,6 @@ function head(slide, index, kicker, title, sub, c) {
 {
   const s = pres.addSlide();
   s.background = { color: PURPLE };
-
-  s.addImage({ path: VASO, x: 10.45, y: 2.02, w: 1.96, h: 3.11 });
 
   // el logotipo va fino y muy espaciado, como en la marca
   s.addText("POBREVERMUT", {

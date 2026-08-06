@@ -73,9 +73,9 @@ Courier New se eligió por ser la única mono disponible tanto en PowerPoint com
 en Google Slides. Si aparece el archivo de fuente real, se cambia en la constante
 `MONO` del script.
 
-**Activos** — el vaso de línea y la bajada manuscrita "Salud, vermút y buena vida"
-se extrajeron del PDF de marca, se recortaron con canal alfa y se tiñeron al color
-que corresponde en cada slide. Están en `marca/`.
+**Activos** — la bajada manuscrita "Salud, vermút y buena vida" se extrajo del PDF
+de marca, se recortó con canal alfa y se tiñó de blanco para el cierre. Está en
+`marca/`. También se extrajo el vaso de línea, pero quedó fuera del deck.
 
 ## Antecedentes
 
