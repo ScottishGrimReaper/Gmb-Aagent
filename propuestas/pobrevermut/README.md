@@ -1,6 +1,6 @@
-# PobreVermut — Propuesta de gestión de campañas 2026
+# PobreVermut — Propuesta de campañas 2026
 
-Presentación comercial para la gestión de campañas de PobreVermut, orientadas a
+Propuesta comercial para la gestión de campañas de PobreVermut, orientadas a
 traccionar el ecommerce.
 
 ## Archivos
@@ -10,26 +10,6 @@ traccionar el ecommerce.
 | `PobreVermut - Propuesta Campanas 2026.pptx` | El entregable. 5 slides, editable. |
 | `generar_propuesta.js` | Script que genera el `.pptx`. Editar acá y regenerar. |
 
-## Los 5 slides
-
-1. Portada
-2. El plan — las tres fases
-3. Qué hago cada mes — y qué no incluye
-4. Honorario — $350.000 líquidos, pauta aparte, revisión al mes 3
-5. Qué necesito para partir — y contacto
-
-Hubo una versión previa de 11 slides (commit `494232c`), descartada por larga.
-
-## Diseño
-
-Fondo tinta (`0F0E0D`) en todo el deck, con el slide del honorario invertido a
-naranja completo. Acento naranja aperitivo (`EF5B25`), texto hueso (`F2EEE9`).
-Tipografía sans en todo: Arial para titulares y numerales, Calibri para texto
-corrido. El motivo gráfico es el círculo naranja de la portada.
-
-Reemplaza el diseño anterior en burdeos y dorado con tipografía serif, que leía
-demasiado formal para la marca.
-
 ## Regenerar el deck
 
 ```bash
@@ -37,26 +17,44 @@ npm install pptxgenjs
 node generar_propuesta.js "PobreVermut - Propuesta Campanas 2026.pptx"
 ```
 
-## Definiciones comerciales que están en el deck
+## Los 5 slides
 
-- **Honorario:** $350.000 líquidos mensuales vía boleta de honorarios.
-  Bruto $412.979 · retención de segunda categoría 15,25% ($62.979) · líquido $350.000.
-  El 15,25% es la tasa 2026 según Ley 21.133; la retiene y declara el cliente.
-- **Alcance:** solo gestión de campañas — mediaplan, assetplan, configuración,
-  optimización y reportería. No incluye producción de creativos ni community management.
+1. Portada
+2. El plan — tres fases
+3. Qué hago cada mes
+4. Honorario — $350.000 líquidos al mes
+5. Trabajemos juntos — cierre y contacto
+
+## Definiciones comerciales
+
+- **Honorario:** $350.000 líquidos mensuales. En el deck va solo el monto líquido,
+  sin desglose tributario. Para emitir la boleta: bruto $412.979, retención de
+  segunda categoría 15,25% ($62.979). El 15,25% es la tasa 2026 según Ley 21.133 y
+  la retiene y declara el cliente.
+- **Plazo:** un primer ciclo de tres meses. Al cierre se revisan los resultados y se
+  define la continuidad. No hay variable sobre ventas comprometido en esta propuesta.
+- **Alcance:** solo gestión de campañas — plan de medios, requerimiento de creativos,
+  configuración, optimización y reportería.
 - **Pauta:** no está incluida en el honorario. Va a nombre de PobreVermut, con su
-  propio medio de pago. Los rangos del slide de inversión son referenciales.
-- **Modelo de socio:** los primeros 3 meses van a honorario fijo. Al cierre del mes 3
-  queda agendada la revisión para sumar un variable sobre ventas del ecommerce por
-  sobre una meta base. No se cobra hoy.
+  propio medio de pago. El rango del deck ($200.000 – $450.000 al mes) es referencial.
 
-## Estructura de las fases
+## Las tres fases
 
-| Fase | Período | Canal | Objetivo |
-|---|---|---|---|
-| 1 | Mes 1–2 | Meta (FB + IG) | Que nos conozcan · setup de medición y construcción de audiencias |
-| 2 | Mes 3–4 | Meta (FB + IG) | Que compren · Advantage+ Shopping y remarketing dinámico |
-| 3 | Mes 5+ | Google (Search + Shopping) | Que nos encuentren · capturar la demanda ya generada |
+| Fase | Canal | Objetivo |
+|---|---|---|
+| 1 | Meta | Que nos conozcan — instalar la marca y dejar la medición andando |
+| 2 | Meta | Que compren — venta directa al ecommerce |
+| 3 | Google | Que nos encuentren — capturar a quien ya busca vermut |
+
+El deck no menciona meses en las fases: la secuencia se entiende por el orden.
+
+## Diseño
+
+Fondo tinta (`0F0E0D`) en todo el deck, con el slide del honorario invertido a
+naranja completo. Acento naranja aperitivo (`EF5B25`), texto hueso (`F2EEE9`).
+Tipografía sans en todo: Arial para titulares y numerales, Calibri para texto
+corrido. El motivo gráfico es el círculo naranja de la portada, que vuelve en el
+cierre.
 
 ## Antecedentes
 

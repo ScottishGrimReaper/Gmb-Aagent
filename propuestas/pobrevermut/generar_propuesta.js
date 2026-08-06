@@ -159,24 +159,30 @@ function dot(slide, x, y, d, color) {
 {
   const s = pres.addSlide();
   s.background = { color: INK };
-  head(s, "01", "El plan", "Tres fases, un objetivo", "Cada fase construye lo que la siguiente necesita.");
+  head(
+    s,
+    "01",
+    "El plan",
+    "Tres fases, un objetivo",
+    "Cada fase construye lo que la siguiente necesita."
+  );
 
   const fases = [
     {
       n: "1",
-      meta: "MES 1 – 2  ·  META",
+      canal: "META",
       t: "Que nos\nconozcan",
       d: "Instalamos la marca y dejamos la medición andando.",
     },
     {
       n: "2",
-      meta: "MES 3 – 4  ·  META",
+      canal: "META",
       t: "Que\ncompren",
       d: "Campañas de venta directa al ecommerce.",
     },
     {
       n: "3",
-      meta: "MES 5 +  ·  GOOGLE",
+      canal: "GOOGLE",
       t: "Que nos\nencuentren",
       d: "Capturamos a quien ya está buscando vermut.",
     },
@@ -198,7 +204,7 @@ function dot(slide, x, y, d, color) {
       valign: "top",
       margin: 0,
     });
-    s.addText(f.meta, {
+    s.addText(f.canal, {
       x,
       y: 4.12,
       w: cw,
@@ -207,7 +213,7 @@ function dot(slide, x, y, d, color) {
       fontSize: 10.5,
       bold: true,
       color: GREY,
-      charSpacing: 1.5,
+      charSpacing: 2.5,
       margin: 0,
     });
     s.addText(f.t, {
@@ -253,64 +259,31 @@ function dot(slide, x, y, d, color) {
   ];
 
   tareas.forEach((t, i) => {
-    const y = 2.75 + i * 0.76;
+    const y = 2.82 + i * 0.8;
     s.addText(String(i + 1).padStart(2, "0"), {
       x: M,
       y,
-      w: 0.62,
-      h: 0.52,
+      w: 0.72,
+      h: 0.58,
       fontFace: DISPLAY,
-      fontSize: 14,
+      fontSize: 16,
       bold: true,
       color: ORANGE,
       valign: "middle",
       margin: 0,
     });
     s.addText(t, {
-      x: M + 0.7,
+      x: M + 0.92,
       y,
-      w: 6.3,
-      h: 0.52,
+      w: CW - 0.92,
+      h: 0.58,
       fontFace: TEXT,
-      fontSize: 18,
+      fontSize: 21,
       color: BONE,
       valign: "middle",
       margin: 0,
     });
   });
-
-  // lo que queda fuera
-  const nx = 8.3;
-  const nw = W - nx - M;
-  s.addText("NO INCLUYE", {
-    x: nx,
-    y: 2.78,
-    w: nw,
-    h: 0.3,
-    fontFace: DISPLAY,
-    fontSize: 10.5,
-    bold: true,
-    color: ORANGE,
-    charSpacing: 2.5,
-    margin: 0,
-  });
-  ["Producción de creativos", "Community management", "La inversión en pauta"].forEach(
-    (t, i) => {
-      const y = 3.35 + i * 0.62;
-      dot(s, nx, y + 0.19, 0.14, GREY);
-      s.addText(t, {
-        x: nx + 0.4,
-        y,
-        w: nw - 0.4,
-        h: 0.5,
-        fontFace: TEXT,
-        fontSize: 16,
-        color: GREY,
-        valign: "middle",
-        margin: 0,
-      });
-    }
-  );
 }
 
 // ================================================================ 4 · HONORARIO
@@ -333,90 +306,43 @@ function dot(slide, x, y, d, color) {
 
   s.addText("$350.000", {
     x: M,
-    y: 1.8,
-    w: 6.4,
-    h: 1.55,
+    y: 1.75,
+    w: 9.5,
+    h: 1.75,
     fontFace: DISPLAY,
-    fontSize: 78,
+    fontSize: 96,
     bold: true,
     color: DEEP,
     margin: 0,
   });
   s.addText("líquidos al mes", {
     x: M,
-    y: 3.38,
-    w: 6.4,
-    h: 0.42,
+    y: 3.62,
+    w: 8.0,
+    h: 0.5,
     fontFace: TEXT,
-    fontSize: 20,
+    fontSize: 24,
     color: DEEP,
     margin: 0,
   });
 
-  const filas = [
-    ["Honorario bruto", "$412.979"],
-    ["Retención 15,25%", "– $62.979"],
-    ["Lo que recibo", "$350.000"],
-  ];
-  filas.forEach(([l, v], i) => {
-    const y = 4.45 + i * 0.52;
-    const last = i === filas.length - 1;
-    s.addText(l, {
-      x: M,
-      y,
-      w: 3.4,
-      h: 0.42,
-      fontFace: TEXT,
-      fontSize: 14,
-      bold: last,
-      color: DEEP,
-      valign: "middle",
-      margin: 0,
-    });
-    s.addText(v, {
-      x: M + 3.4,
-      y,
-      w: 2.2,
-      h: 0.42,
-      align: "right",
-      fontFace: TEXT,
-      fontSize: 14,
-      bold: last,
-      color: DEEP,
-      valign: "middle",
-      margin: 0,
-    });
-  });
-  s.addText("Boleta de honorarios. La retención la declara PobreVermut.", {
-    x: M,
-    y: 6.12,
-    w: 6.4,
-    h: 0.34,
-    fontFace: TEXT,
-    fontSize: 12.5,
-    italic: true,
-    color: DEEP,
-    margin: 0,
-  });
-
-  const nx = 7.75;
-  const nw = W - nx - M;
   const notas = [
     [
       "LA PAUTA VA APARTE",
       "Entre $200.000 y $450.000 al mes según la fase, a nombre de PobreVermut.",
     ],
     [
-      "LOS PRIMEROS 3 MESES, FIJO",
-      "Al mes 3 revisamos el modelo y evaluamos sumar un variable sobre las ventas del ecommerce.",
+      "UN PRIMER CICLO DE TRES MESES",
+      "Partimos con tres meses de trabajo. Al cierre revisamos juntos los resultados y definimos cómo seguir.",
     ],
   ];
+  const bw = 5.3;
   notas.forEach(([t, d], i) => {
-    const y = 1.95 + i * 2.6;
+    const x = M + i * (bw + 0.63);
     s.addText(t, {
-      x: nx,
-      y,
-      w: nw,
+      x,
+      y: 5.05,
+      w: bw,
       h: 0.3,
       fontFace: DISPLAY,
       fontSize: 10.5,
@@ -426,86 +352,67 @@ function dot(slide, x, y, d, color) {
       margin: 0,
     });
     s.addText(d, {
-      x: nx,
-      y: y + 0.44,
-      w: nw,
-      h: 1.5,
+      x,
+      y: 5.48,
+      w: bw,
+      h: 1.35,
       fontFace: DISPLAY,
-      fontSize: 19,
+      fontSize: 16,
       bold: true,
       color: DEEP,
-      lineSpacingMultiple: 1.18,
+      lineSpacingMultiple: 1.2,
       valign: "top",
       margin: 0,
     });
   });
 }
 
-// ================================================================ 5 · PARA PARTIR
+// ================================================================ 5 · CIERRE
 {
   const s = pres.addSlide();
   s.background = { color: INK };
-  head(s, "04", "Para partir", "Qué necesito");
 
-  const reqs = [
-    "Accesos a Meta, Instagram y Facebook",
-    "Acceso al ecommerce para píxel y catálogo",
-    "Presupuesto de pauta confirmado",
-    "Creativos del equipo creativo",
-    "Un kickoff de 45 minutos",
-  ];
+  dot(s, 6.22, 1.85, 0.9);
 
-  reqs.forEach((t, i) => {
-    const y = 2.75 + i * 0.76;
-    dot(s, M, y + 0.19, 0.16);
-    s.addText(t, {
-      x: M + 0.48,
-      y,
-      w: 6.5,
-      h: 0.52,
-      fontFace: TEXT,
-      fontSize: 17,
-      color: BONE,
-      valign: "middle",
+  s.addText(
+    [
+      { text: "Trabajemos ", options: { color: BONE } },
+      { text: "juntos.", options: { color: ORANGE } },
+    ],
+    {
+      x: 1.5,
+      y: 3.28,
+      w: 10.33,
+      h: 1.1,
+      align: "center",
+      fontFace: DISPLAY,
+      fontSize: 52,
+      bold: true,
       margin: 0,
-    });
-  });
+    }
+  );
 
-  const nx = 8.3;
-  const nw = W - nx - M;
-  s.addText("Campañas activas\nen dos semanas.", {
-    x: nx,
-    y: 2.7,
-    w: nw,
-    h: 1.7,
-    fontFace: DISPLAY,
-    fontSize: 30,
-    bold: true,
-    color: ORANGE,
-    lineSpacingMultiple: 1.08,
-    valign: "top",
-    margin: 0,
-  });
   s.addText("Nicolás", {
-    x: nx,
-    y: 4.55,
-    w: nw,
-    h: 0.34,
+    x: 1.5,
+    y: 5.15,
+    w: 10.33,
+    h: 0.36,
+    align: "center",
     fontFace: DISPLAY,
-    fontSize: 15,
+    fontSize: 16,
     bold: true,
     color: BONE,
     margin: 0,
   });
-  s.addText("nicolas@sherpasstudio.cl\n+56 9 3125 6539", {
-    x: nx,
-    y: 4.92,
-    w: nw,
-    h: 0.68,
+  s.addText("nicolas@sherpasstudio.cl  ·  +56 9 3125 6539", {
+    x: 1.5,
+    y: 5.54,
+    w: 10.33,
+    h: 0.36,
+    align: "center",
     fontFace: TEXT,
-    fontSize: 14,
+    fontSize: 15,
     color: GREY,
-    lineSpacingMultiple: 1.25,
     margin: 0,
   });
 }
