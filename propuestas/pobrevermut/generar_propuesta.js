@@ -285,7 +285,7 @@ function head(slide, index, kicker, title, sub, c) {
 
   label(s, "03  —  Honorario", { x: M, y: 0.82, w: CW, fontSize: 12, color: GREEN });
 
-  s.addText("$350.000", {
+  s.addText("$300.000", {
     x: M,
     y: 1.75,
     w: 9.5,

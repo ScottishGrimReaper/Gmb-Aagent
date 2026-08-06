@@ -23,14 +23,14 @@ node generar_propuesta.js "PobreVermut - Propuesta Campanas 2026.pptx"
 1. Portada
 2. El plan — tres fases
 3. Qué hago cada mes
-4. Honorario — $350.000 líquidos al mes
+4. Honorario — $300.000 líquidos al mes
 5. Trabajemos juntos — cierre y contacto
 
 ## Definiciones comerciales
 
-- **Honorario:** $350.000 líquidos mensuales. En el deck va solo el monto líquido,
-  sin desglose tributario. Para emitir la boleta: bruto $412.979, retención de
-  segunda categoría 15,25% ($62.979). El 15,25% es la tasa 2026 según Ley 21.133 y
+- **Honorario:** $300.000 líquidos mensuales. En el deck va solo el monto líquido,
+  sin desglose tributario. Para emitir la boleta: bruto $353.982, retención de
+  segunda categoría 15,25% ($53.982). El 15,25% es la tasa 2026 según Ley 21.133 y
   la retiene y declara el cliente.
 - **Plazo:** un primer ciclo de tres meses. Al cierre se revisan los resultados y se
   define la continuidad. No hay variable sobre ventas comprometido en esta propuesta.
