@@ -9,6 +9,7 @@ traccionar el ecommerce.
 |---|---|
 | `PobreVermut - Propuesta Campanas 2026.pptx` | El entregable. 5 slides, editable. |
 | `generar_propuesta.js` | Script que genera el `.pptx`. Editar acá y regenerar. |
+| `marca/` | Activos de marca extraídos del PDF `Barra_Pobrevermut`. El script los necesita. |
 
 ## Regenerar el deck
 
@@ -50,11 +51,31 @@ El deck no menciona meses en las fases: la secuencia se entiende por el orden.
 
 ## Diseño
 
-Fondo tinta (`0F0E0D`) en todo el deck, con el slide del honorario invertido a
-naranja completo. Acento naranja aperitivo (`EF5B25`), texto hueso (`F2EEE9`).
-Tipografía sans en todo: Arial para titulares y numerales, Calibri para texto
-corrido. El motivo gráfico es el círculo naranja de la portada, que vuelve en el
-cierre.
+Sigue la identidad de PobreVermut, tomada del PDF `Barra_Pobrevermut`.
+
+**Colores** — muestreados directamente del PDF:
+
+| Rol | Hex |
+|---|---|
+| Fondo dominante (púrpura) | `3A1842` |
+| Acento sobre púrpura (magenta) | `DE27A0` |
+| Secundario sobre púrpura (lila) | `BFA3C8` |
+| Fondo del bloque de valor (teal) | `284E58` |
+| Acento sobre teal (verde) | `46BD7C` |
+
+El deck usa bloques de color plano como la marca: cuatro slides en púrpura y el
+del honorario en teal con verde, replicando cómo PobreVermut presenta el precio
+en su propio material.
+
+**Tipografía** — Arial Bold en caja alta para titulares, Courier New en caja alta
+y espaciada para etiquetas y texto. La monoespaciada aproxima la de la marca;
+Courier New se eligió por ser la única mono disponible tanto en PowerPoint como
+en Google Slides. Si aparece el archivo de fuente real, se cambia en la constante
+`MONO` del script.
+
+**Activos** — el vaso de línea y la bajada manuscrita "Salud, vermút y buena vida"
+se extrajeron del PDF de marca, se recortaron con canal alfa y se tiñeron al color
+que corresponde en cada slide. Están en `marca/`.
 
 ## Antecedentes
 
